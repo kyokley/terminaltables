@@ -9,21 +9,8 @@ Easily draw tables in terminal/console applications from a list of lists of stri
 
 📖 Full documentation: https://robpol86.github.io/terminaltables
 
-.. image:: https://img.shields.io/appveyor/ci/Robpol86/terminaltables/master.svg?style=flat-square&label=AppVeyor%20CI
-    :target: https://ci.appveyor.com/project/Robpol86/terminaltables
-    :alt: Build Status Windows
-
-.. image:: https://img.shields.io/travis/Robpol86/terminaltables/master.svg?style=flat-square&label=Travis%20CI
-    :target: https://travis-ci.org/Robpol86/terminaltables
-    :alt: Build Status
-
-.. image:: https://img.shields.io/codecov/c/github/Robpol86/terminaltables/master.svg?style=flat-square&label=Codecov
-    :target: https://codecov.io/gh/Robpol86/terminaltables
-    :alt: Coverage Status
-
-.. image:: https://img.shields.io/pypi/v/terminaltables.svg?style=flat-square&label=Latest
-    :target: https://pypi.python.org/pypi/terminaltables
-    :alt: Latest Version
+.. image:: https://travis-ci.org/kyokley/terminaltables.svg?branch=master
+    :target: https://travis-ci.org/kyokley/terminaltables
 
 Quickstart
 ==========
