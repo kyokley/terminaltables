@@ -175,3 +175,39 @@ class PorcelainTable(AsciiTable):
         self.inner_footing_row_border = False
         self.inner_heading_row_border = False
         self.outer_border = False
+
+class BorderlessTable(AsciiTable):
+    """Draw a table using box-drawing characters on Unix platforms. Table borders won't have any gaps between lines.
+
+    Similar to the tables shown on PC BIOS boot messages, but not double-lined.
+    """
+
+    CHAR_F_INNER_HORIZONTAL = ''
+    CHAR_F_INNER_INTERSECT = ''
+    CHAR_F_INNER_VERTICAL = ''
+    CHAR_F_OUTER_LEFT_INTERSECT = ''
+    CHAR_F_OUTER_LEFT_VERTICAL = ''
+    CHAR_F_OUTER_RIGHT_INTERSECT = ''
+    CHAR_F_OUTER_RIGHT_VERTICAL = ''
+    CHAR_H_INNER_HORIZONTAL = ''
+    CHAR_H_INNER_INTERSECT = ''
+    CHAR_H_INNER_VERTICAL = ''
+    CHAR_H_OUTER_LEFT_INTERSECT = ''
+    CHAR_H_OUTER_LEFT_VERTICAL = ''
+    CHAR_H_OUTER_RIGHT_INTERSECT = ''
+    CHAR_H_OUTER_RIGHT_VERTICAL = ''
+    CHAR_INNER_HORIZONTAL = ''
+    CHAR_INNER_INTERSECT = ''
+    CHAR_INNER_VERTICAL = ''
+    CHAR_OUTER_BOTTOM_HORIZONTAL = ''
+    CHAR_OUTER_BOTTOM_INTERSECT = ''
+    CHAR_OUTER_BOTTOM_LEFT = ''
+    CHAR_OUTER_BOTTOM_RIGHT = ''
+    CHAR_OUTER_LEFT_INTERSECT = ''
+    CHAR_OUTER_LEFT_VERTICAL = ''
+    CHAR_OUTER_RIGHT_INTERSECT = ''
+    CHAR_OUTER_RIGHT_VERTICAL = ''
+    CHAR_OUTER_TOP_HORIZONTAL = ' '
+    CHAR_OUTER_TOP_INTERSECT = ''
+    CHAR_OUTER_TOP_LEFT = ''
+    CHAR_OUTER_TOP_RIGHT = ''
