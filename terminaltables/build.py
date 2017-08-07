@@ -140,7 +140,7 @@ def build_row(row, left, center, right):
         yield combine((c[row_index] for c in row), left, center, right)
 
 
-def flatten(table, encoding='ascii'):
+def flatten(table, encoding=None):
     """Flatten table data into a single string with newlines.
 
     :param iter table: Padded and bordered table data.
@@ -148,4 +148,7 @@ def flatten(table, encoding='ascii'):
     :return: Joined rows/cells.
     :rtype: str
     """
-    return '\n'.join(''.join([s.encode(encoding) for s in r]) for r in table)
+    if encoding:
+        return '\n'.join(''.join([s.encode(encoding) for s in r]) for r in table)
+    else:
+        return '\n'.join(''.join(r) for r in table)
