@@ -168,7 +168,7 @@ class BaseTable(object):
         for line in build_row(cells_in_row, left, center, right):
             yield line
 
-    def gen_table(self, inner_widths, inner_heights, outer_widths):
+    def gen_table(self, inner_widths, inner_heights, outer_widths, encoding='ascii'):
         """Combine everything and yield every line of the entire table with borders.
 
         :param iter inner_widths: List of widths (no padding) for each column.
@@ -192,7 +192,7 @@ class BaseTable(object):
             else:
                 style = 'row'
             for line in self.gen_row_lines(row, style, inner_widths, inner_heights[i]):
-                yield line
+                yield line.encode(encoding)
             # If this is the last row then break. No separator needed.
             if i == last_row_index:
                 break
@@ -215,3 +215,8 @@ class BaseTable(object):
         """Return a large string of the entire table ready to be printed to the terminal."""
         dimensions = max_dimensions(self.table_data, self.padding_left, self.padding_right)[:3]
         return flatten(self.gen_table(*dimensions))
+
+    def encoded_table(self, encoding='ascii'):
+        """Return a large string of the entire table ready to be printed to the terminal."""
+        dimensions = max_dimensions(self.table_data, self.padding_left, self.padding_right)[:3]
+        return flatten(self.gen_table(*dimensions, encoding=encoding))
