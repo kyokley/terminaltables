@@ -216,7 +216,7 @@ class BaseTable(object):
         dimensions = max_dimensions(self.table_data, self.padding_left, self.padding_right)[:3]
         return flatten(self.gen_table(*dimensions))
 
-    def encoded_table(self, encoding='ascii'):
+    def unicode_table(self, encoding='ascii'):
         """Return a large string of the entire table ready to be printed to the terminal."""
         dimensions = max_dimensions(self.table_data, self.padding_left, self.padding_right)[:3]
         return flatten(self.gen_table(*dimensions), encoding=encoding)
