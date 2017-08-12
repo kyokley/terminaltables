@@ -107,9 +107,9 @@ def test_bool_none():
 def test_cjk():
     """Test with CJK characters."""
     table_data = [
-        ['CJK'.decode('utf-8')],
-        ['蓝色'.decode('utf-8')],
-        ['世界你好'.decode('utf-8')],
+        [u'CJK'],
+        [u'蓝色'],
+        [u'世界你好'],
     ]
     table = BaseTable(table_data)
     actual = table.unicode_table(encoding='utf-8')
@@ -129,9 +129,9 @@ def test_cjk():
 def test_rtl():
     """Test with RTL characters."""
     table_data = [
-        ['RTL'.decode('utf-8')],
-        ['שלום'.decode('utf-8')],
-        ['معرب'.decode('utf-8')],
+        [u'RTL'],
+        [u'שלום'],
+        [u'معرب'],
     ]
     table = BaseTable(table_data)
     actual = table.unicode_table(encoding='utf-8')
@@ -151,12 +151,12 @@ def test_rtl():
 def test_rtl_large():
     """Test large table of RTL characters."""
     table_data = [
-        ['اكتب'.decode('utf-8'), 'اللون'.decode('utf-8'), 'اسم'.decode('utf-8')],
-        ['البندق'.decode('utf-8'), 'أخضر'.decode('utf-8'), 'أفوكادو'.decode('utf-8')],
-        ['ثمرة'.decode('utf-8'), 'أحمر'.decode('utf-8'), 'بندورة'.decode('utf-8')],
-        ['الخضروات'.decode('utf-8'), 'أخضر'.decode('utf-8'), 'الخس'.decode('utf-8')],
+        [u'اكتب', u'اللون', u'اسم'],
+        [u'البندق', u'أخضر', u'أفوكادو'],
+        [u'ثمرة', u'أحمر', u'بندورة'],
+        [u'الخضروات', u'أخضر', u'الخس'],
     ]
-    table = BaseTable(table_data, 'جوجل المترجم'.decode('utf-8'))
+    table = BaseTable(table_data, u'جوجل المترجم')
     actual = table.unicode_table(encoding='utf-8')
 
     expected = (

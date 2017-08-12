@@ -1,6 +1,9 @@
 """Combine cells into rows."""
 
+import sys
 from terminaltables.width_and_alignment import visible_width
+
+PY2 = sys.version_info[0] == 2
 
 
 def combine(line, left, intersect, right):
@@ -148,7 +151,7 @@ def flatten(table, encoding=None):
     :return: Joined rows/cells.
     :rtype: str
     """
-    if encoding:
+    if encoding and PY2:
         return '\n'.join(''.join([s.encode(encoding) for s in r]) for r in table)
     else:
         return '\n'.join(''.join(r) for r in table)
