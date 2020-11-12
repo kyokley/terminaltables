@@ -3,3 +3,6 @@ shell: build
 
 build:
 	docker build -t kyokley/terminaltables .
+
+tests: build
+	docker run --rm -it -v $$(pwd):/code kyokley/terminaltables
