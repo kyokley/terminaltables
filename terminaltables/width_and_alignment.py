@@ -2,10 +2,9 @@
 
 import re
 import unicodedata
-
 from terminaltables.terminal_io import terminal_size
 
-RE_COLOR_ANSI = re.compile(r'(\033\[[\d;]+m)')
+ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|(\[|\()[0-?]*[ -/]*[@-~])', flags=re.I)
 
 
 def visible_width(string):
@@ -21,7 +20,7 @@ def visible_width(string):
     :rtype: int
     """
     if '\033' in string:
-        string = RE_COLOR_ANSI.sub('', string)
+        string = ansi_escape.sub('', string)
 
     # Convert to unicode.
     try:

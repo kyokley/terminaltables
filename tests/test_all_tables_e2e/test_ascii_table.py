@@ -6,12 +6,15 @@ from textwrap import dedent
 import py
 import pytest
 
+from blessings import Terminal
 from terminaltables import AsciiTable
 from terminaltables.terminal_io import IS_WINDOWS
 from tests import PROJECT_ROOT
 from tests.screenshot import RunNewConsole, screenshot_until_match
 
 HERE = py.path.local(__file__).dirpath()
+
+term = Terminal()
 
 
 def test_single_line():
@@ -36,6 +39,38 @@ def test_single_line():
         '| Name       | Color |      Type |\n'
         '+------------+-------+-----------+\n'
         '| Avocado    | green |       nut |\n'
+        '| Tomato     |  red  |     fruit |\n'
+        '| Lettuce    | green | vegetable |\n'
+        '| Watermelon | green |           |\n'
+        '+------------+-------+-----------+\n'
+        '|            |       |           |\n'
+        '+------------+-------+-----------+'
+    )
+    assert actual == expected
+
+
+def test_blessings_colors():
+    """Test single-lined cells."""
+    table_data = [
+        ['Name', 'Color', 'Type'],
+        ['Avocado', f'{term.green}green{term.normal}', 'nut'],
+        ['Tomato', 'red', 'fruit'],
+        ['Lettuce', 'green', 'vegetable'],
+        ['Watermelon', 'green'],
+        [],
+    ]
+    table = AsciiTable(table_data, 'Example')
+    table.inner_footing_row_border = True
+    table.justify_columns[0] = 'left'
+    table.justify_columns[1] = 'center'
+    table.justify_columns[2] = 'right'
+    actual = table.table
+
+    expected = (
+        '+Example-----+-------+-----------+\n'
+        '| Name       | Color |      Type |\n'
+        '+------------+-------+-----------+\n'
+        f'| Avocado    | {term.green}green{term.normal} |       nut |\n'
         '| Tomato     |  red  |     fruit |\n'
         '| Lettuce    | green | vegetable |\n'
         '| Watermelon | green |           |\n'
